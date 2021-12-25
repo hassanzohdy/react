@@ -32,6 +32,8 @@ function distributeConfigurations() {
     localeCodesList = Object.keys(appConfigurations.locales);
   }
 
+  console.log({ ...appConfigurations.router });
+
   if (!appConfigurations.router) {
     appConfigurations.router = {};
   }
@@ -39,6 +41,8 @@ function distributeConfigurations() {
   if (!appConfigurations?.router?.localeCodes) {
     appConfigurations.router.localeCodes = localeCodesList;
   }
+
+  console.log({ ...appConfigurations.router });
 
   if (appConfigurations.router) {
     setRouterConfigurations(appConfigurations.router);
