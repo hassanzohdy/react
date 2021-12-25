@@ -79,7 +79,7 @@ export type LocaleCodes = {
  */
 export type LangMode = "array" | "object";
 
-export type ApplicationsConfigurations = {
+export type ApplicationConfigurations = {
   /**
    * Application general configurations
    */

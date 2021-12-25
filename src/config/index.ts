@@ -2,15 +2,22 @@ import config from "@mongez/config";
 import events from "@mongez/events";
 import { getCurrentUser } from "@mongez/user";
 import { setHttpConfigurations } from "@mongez/http";
-import { ApplicationsConfigurations } from "../types";
+import { ApplicationConfigurations } from "../types";
 import updateAppLocale from "../utils/updateAppLocale";
 import { setCacheConfigurations } from "@mongez/cache";
 import { setRouterConfigurations } from "@mongez/react-router";
+import { Obj } from "@mongez/reinforcements";
 
-export let appConfigurations: ApplicationsConfigurations = {};
+export let appConfigurations: ApplicationConfigurations = {};
+
+export function getAppConfig(key?: string, defaultValue?: any): any {
+  if (arguments.length === 0) return appConfigurations;
+
+  return Obj.get(appConfigurations, key as string, defaultValue);
+}
 
 export function setAppConfigurations(
-  newConfigurationsList: ApplicationsConfigurations
+  newConfigurationsList: ApplicationConfigurations
 ) {
   appConfigurations = { ...appConfigurations, newConfigurationsList };
 
