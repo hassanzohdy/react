@@ -19,7 +19,10 @@ export function getAppConfig(key?: string, defaultValue?: any): any {
 export function setAppConfigurations(
   newConfigurationsList: ApplicationConfigurations
 ) {
+  console.log({ ...newConfigurationsList });
   appConfigurations = { ...appConfigurations, newConfigurationsList };
+
+  console.log({ ...appConfigurations });
 
   config.set(appConfigurations);
 
