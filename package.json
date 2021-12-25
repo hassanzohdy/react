@@ -1,13 +1,13 @@
 {
     "name": "@mongez/react",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "description": "A React App Manager",
     "main": "src/index.ts",
     "dependencies": {
         "@mongez/cache": "^1.0.x",
         "@mongez/config": "^1.0.x",
         "@mongez/dom": "^1.0.x",
-        "@mongez/encryption": "^1.0.1",
+        "@mongez/encryption": "^1.0.x",
         "@mongez/events": "^1.0.x",
         "@mongez/http": "^1.0.x",
         "@mongez/localization": "^1.0.x",

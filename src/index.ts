@@ -5,6 +5,9 @@ export default startApplication;
 // hooks
 export * from "./hooks";
 
+// configurations
+export * from "./config";
+
 // utils
 export * from "./utils";
 
