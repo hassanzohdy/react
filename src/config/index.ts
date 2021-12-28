@@ -8,7 +8,11 @@ import { setCacheConfigurations } from "@mongez/cache";
 import { setRouterConfigurations } from "@mongez/react-router";
 import { Obj } from "@mongez/reinforcements";
 
-export let appConfigurations: ApplicationConfigurations = {};
+export let appConfigurations: ApplicationConfigurations = {
+  endpoint: {
+    auth: true,
+  },
+};
 
 export function getAppConfig(key?: string, defaultValue?: any): any {
   if (arguments.length === 0) return appConfigurations;
@@ -19,7 +23,7 @@ export function getAppConfig(key?: string, defaultValue?: any): any {
 export function setAppConfigurations(
   newConfigurationsList: ApplicationConfigurations
 ) {
-  appConfigurations = { ...appConfigurations, ...newConfigurationsList };
+  appConfigurations = Obj.merge(appConfigurations, newConfigurationsList);
 
   config.set(appConfigurations);
 
@@ -57,7 +61,7 @@ function distributeConfigurations() {
       appConfigurations.endpoint.setAuthorizationHeader = () => {
         const user = getCurrentUser();
 
-        if (user.isLoggedIn()) {
+        if (user && user.isLoggedIn()) {
           return `Bearer ${user.getAccessToken()}`;
         } else if (appConfigurations?.endpoint?.apiKey) {
           return `key ${appConfigurations.endpoint.apiKey}`;
