@@ -1,12 +1,13 @@
 import config from "@mongez/config";
 import events from "@mongez/events";
+import { Obj } from "@mongez/reinforcements";
 import { getCurrentUser } from "@mongez/user";
 import { setHttpConfigurations } from "@mongez/http";
 import { ApplicationConfigurations } from "../types";
 import updateAppLocale from "../utils/updateAppLocale";
 import { setCacheConfigurations } from "@mongez/cache";
 import { setRouterConfigurations } from "@mongez/react-router";
-import { Obj } from "@mongez/reinforcements";
+import { setEncryptionConfigurations } from "@mongez/encryption";
 
 export let appConfigurations: ApplicationConfigurations = {
   endpoint: {
@@ -46,6 +47,10 @@ function distributeConfigurations() {
 
   if (appConfigurations.router) {
     setRouterConfigurations(appConfigurations.router);
+  }
+
+  if (appConfigurations.encryption) {
+    setEncryptionConfigurations(appConfigurations.encryption);
   }
 
   if (appConfigurations.cache) {
