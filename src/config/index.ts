@@ -33,6 +33,7 @@ export function setAppConfigurations(
 
 function distributeConfigurations() {
   let localeCodesList: string[] = [];
+
   if (appConfigurations.locales) {
     localeCodesList = Object.keys(appConfigurations.locales);
   }
@@ -62,7 +63,10 @@ function distributeConfigurations() {
   }
 
   if (appConfigurations.endpoint) {
-    if (appConfigurations?.endpoint?.auth) {
+    if (
+      appConfigurations.endpoint.auth &&
+      !appConfigurations.endpoint.setAuthorizationHeader
+    ) {
       appConfigurations.endpoint.setAuthorizationHeader = () => {
         const user = getCurrentUser();
 

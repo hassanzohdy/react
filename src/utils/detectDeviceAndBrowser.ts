@@ -5,7 +5,7 @@ interface Object {
 }
 
 export default function detectDeviceAndBrowser() {
-  const bodyClasses = document.body.classList;
+  const classesList = document.documentElement.classList;
 
   const detectDeviceType = () => {
     const windowSize = document.body.clientWidth;
@@ -17,7 +17,7 @@ export default function detectDeviceAndBrowser() {
       "edge",
     ]) {
       if (Is.browser(browserName)) {
-        bodyClasses.add(browserName);
+        classesList.add(browserName);
       }
     }
 
@@ -25,22 +25,22 @@ export default function detectDeviceAndBrowser() {
 
     for (const deviceType of ["ios", "andriod", "ipad", "iphone"]) {
       if (isMobileOf[deviceType] && isMobileOf[deviceType]()) {
-        bodyClasses.add(deviceType);
+        classesList.add(deviceType);
       }
     }
 
     if (windowSize <= 570) {
-      bodyClasses.add("mobile");
-      bodyClasses.remove("desktop");
-      bodyClasses.remove("tablet");
+      classesList.add("mobile");
+      classesList.remove("desktop");
+      classesList.remove("tablet");
     } else if (windowSize <= 1024) {
-      bodyClasses.add("tablet");
-      bodyClasses.remove("desktop");
-      bodyClasses.remove("mobile");
+      classesList.add("tablet");
+      classesList.remove("desktop");
+      classesList.remove("mobile");
     } else {
-      bodyClasses.add("desktop");
-      bodyClasses.remove("mobile");
-      bodyClasses.remove("tablet");
+      classesList.add("desktop");
+      classesList.remove("mobile");
+      classesList.remove("tablet");
     }
   };
 
