@@ -1,8 +1,10 @@
+import { ReportHandler } from "web-vitals";
 import { HttpConfigurations } from "@mongez/http";
 import { CacheConfigurations } from "@mongez/cache";
-import { EncryptionConfigurations } from "@mongez/encryption";
 import { RouterConfigurations } from "@mongez/react-router";
-import { ReportHandler } from "web-vitals";
+import { HelmetConfigurations } from "@mongez/react-helmet";
+import { EncryptionConfigurations } from "@mongez/encryption";
+import { LocalizationConfigurations } from "@mongez/localization";
 
 export type ApplicationOptions = {
   /**
@@ -85,27 +87,21 @@ export type ApplicationConfigurations = {
    */
   app?: ApplicationOptions;
   /**
-   * Lang mode is the type of languages that will be rendered
-   *
-   * If type is array, then the structure of the data will be [name][index][localeCode] = $localeCode
-   * If type is object, then the structure of the data will be [name][localeCode] = $localeCode
+   * Localization Configurations
    */
-  langMode?: LangMode;
-  /**
-   * Default locale code
-   * If no value, then it will be detected from html tag attributes
-   */
-  defaultLocaleCode?: string;
-  /**
-   * Current locale code for the app
-   *
-   * This value is set automatically through Mongez
-   */
-  currentLocaleCode?: string;
-  /**
-   * Locale Codes
-   */
-  locales?: LocaleCodes;
+  localization?: LocalizationConfigurations & {
+    /**
+     * Lang mode is the type of languages that will be rendered
+     *
+     * If type is array, then the structure of the data will be [name][index][localeCode] = $localeCode
+     * If type is object, then the structure of the data will be [name][localeCode] = $localeCode
+     */
+    langMode?: LangMode;
+    /**
+     * Locale Codes
+     */
+    locales?: LocaleCodes;
+  };
   /**
    * Router configurations
    */
@@ -123,7 +119,34 @@ export type ApplicationConfigurations = {
    */
   encryption?: EncryptionConfigurations;
   /**
+   * Helmet Configurations
+   */
+  helmet?: HelmetConfigurations;
+  /**
    * Any other generic configurations
    */
   [configKey: string]: any;
+};
+
+export type CurrentType = {
+  /**
+   * Current locale code
+   */
+  localeCode?: string;
+  /**
+   * Current locale object
+   */
+  locale?: LocaleCode;
+  /**
+   * Current direction
+   */
+  direction?: "ltr" | "rtl";
+  /**
+   * Current route
+   */
+  route?: string;
+  /**
+   * Current app name
+   */
+  appName?: string;
 };

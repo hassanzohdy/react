@@ -1,6 +1,6 @@
 import router, { routerEvents } from "@mongez/react-router";
 import { ApplicationOptions } from "./types";
-import { appConfigurations } from "./config";
+import { getAppConfig } from "./config";
 import detectDarkMode from "./utils/detectDarkMode";
 import reportWebVitals from "./utils/reportWebVitals";
 import detectDeviceAndBrowser from "./utils/detectDeviceAndBrowser";
@@ -8,11 +8,10 @@ import updateAppLocale from "./utils/updateAppLocale";
 
 export default function startApplication(options: ApplicationOptions = {}) {
   const defaultOptions: ApplicationOptions = {
-    debug: appConfigurations.app?.debug || false,
-    debugMethod: appConfigurations.app?.debugMethod || console.log,
-    detectDeviceAndBrowser:
-      appConfigurations.app?.detectDeviceAndBrowser || true,
-    detectDarkMode: appConfigurations.app?.detectDarkMode || true,
+    debug: getAppConfig("app.debug", false),
+    debugMethod: getAppConfig("app.debugMethod", console.log),
+    detectDeviceAndBrowser: getAppConfig("app.detectDeviceAndBrowser", true),
+    detectDarkMode: getAppConfig("app.detectDarkMode", true),
   };
 
   options = { ...defaultOptions, ...options };

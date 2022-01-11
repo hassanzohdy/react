@@ -1,4 +1,4 @@
-# Mongez React
+# Mongez React (MR)
 
 A react app manager for organizing and utilizing react apps
 
@@ -14,7 +14,7 @@ Or
 
 ## Usage
 
-First off, clear your `src/index.ts` or `src/index.js` file from everything inside it. 
+First off, clear your `src/index.ts` or `src/index.js` file from everything inside it.
 
 Now, import the package in your `src/index.ts` or `src/index.js` file
 
@@ -37,6 +37,7 @@ Now create the following directories: `apps` and `shared` directories, so your p
 |--- src
   |--- apps
   |--- shared
+      |--- shared-provider.ts
   |--- index.ts
 ```
 
@@ -49,8 +50,30 @@ Here we've created two directories, `apps` and `shared`, now let's create a new 
       |--- front-office-modules.json
       |--- front-office-provider.ts
   |--- shared
+      |--- shared-provider.ts
   |--- index.ts
 ```
+
+## Shared Provider
+
+Let's create a shared provider so we can encapsulate our shared files such as configurations and apps list in one point to keep our `src/index.ts` cleaner.
+
+Let's create `shared/shared-provider.ts` file
+
+```ts
+// empty for now, but let's import it anyway in our src/index.ts file
+```
+
+Now we go to `src/index.ts` file
+
+```ts
+import './shared/shared-provider';
+import startApplication from '@mongez/react';
+
+startApplication();
+```
+
+## Creating our first app
 
 We created our app with two empty files inside it, the app provider and app setup and modules declarations.
 
@@ -84,20 +107,14 @@ setApps([
 ]);
 ```
 
-Let's head back to our `index.ts` file and import our `apps-list`.
+Let's head back to our `shared-provider.ts` file and import our `apps-list`.
 
 ```ts
-// src/index.ts
+// src/shared-provider.ts
 import './apps-list';
-
-import startApplication from '@mongez/react';
-
-startApplication();
-
 ```
 
 Now let's create our home module.
-
 
 ```bash
 |--- src
@@ -134,10 +151,190 @@ import HomePage from './components/HomePage';
 router.add('/', HomePage);
 ```
 
+## Creating our base configurations
 
+Navigate to `src/shared` directory and create a `config.ts` file.
 
+```ts
+// src/shared/config.ts
+import { ApplicationConfigurations, setAppConfigurations } from "@mongez/react";
 
+const configurationsList: ApplicationConfigurations = {};
 
-## TODO
+setAppConfigurations(configurationsList);
+```
 
-- Completing Docs.
+Just an empty object for our configurations file, but what configurations can be declared in that objecT?
+
+Well, the following packages's configurations are configured from one place using `setAppConfigurations`
+
+- [Mongez Http](https://github.com/hassanzohdy/mongez-http#http-configurations-list)
+- [Mongez React Router](https://github.com/hassanzohdy/react-router#router-configurations)
+- [Mongez React Helmet](https://github.com/hassanzohdy/mongez-react-helmet#helmet-configurations-list)
+- [Mongez Localization](https://github.com/hassanzohdy/mongez-localization#configuration-setup)
+- [Mongez encryption](https://github.com/hassanzohdy/mongez-encryption#encryption-configurations)
+- [Mongez Cache](https://github.com/hassanzohdy/mongez-cache#setting-key-prefix)
+
+The entire app configurations as follows:
+
+```ts
+import { ReportHandler } from "web-vitals";
+import { HttpConfigurations } from "@mongez/http";
+import { CacheConfigurations } from "@mongez/cache";
+import { RouterConfigurations } from "@mongez/react-router";
+import { HelmetConfigurations } from "@mongez/react-helmet";
+import { EncryptionConfigurations } from "@mongez/encryption";
+import { LocalizationConfigurations } from "@mongez/localization";
+
+type ApplicationOptions = {
+  /**
+   * Determine whether to enable debugging mode or not
+   *
+   * @default false
+   */
+  debug?: boolean;
+  /**
+   * Debug method that is passed to reportWebVitals function
+   *
+   * @default console.log
+   */
+  debugMethod?: ReportHandler;
+  /**
+   * Detect current used device and browser such as google chrome, ipad, tablet and so on, based on the current state of the browser and device, html tag class will be updated, i.e `chrome desktop` `safari ipad` and so on
+   *
+   * @default true
+   */
+  detectDeviceAndBrowser?: boolean;
+  /**
+   * Detect Dark Mode based on user's preferences, if found then a `dark` class will be added to html tag
+   *
+   * @default true
+   */
+  detectDarkMode?: boolean;
+};
+
+type ReactHttpConfigurations = HttpConfigurations & {
+  /**
+   * If set to true, then each request will determine the Authorization Header Based on current user state
+   * If user is logged in, then A `Bearer xxx` token wil lbe sent in `Authorization` Header,
+   * Otherwise, if `apiKey` is set, then a `key xxx` wil lbe sent in `Authorization` Header.
+   *
+   * @default true
+   */
+  auth?: boolean;
+  /**
+   * Sent in every request in the `Authorization` header if user is not logged in
+   * Will not be used if no apiKey is passed or if `auth` prop is set to false
+   */
+  apiKey?: string;
+};
+
+type LocaleCode = {
+  /**
+   * Locale code name i.e English | Arabic..etc
+   */
+  name: string;
+  /**
+   * Locale Code direction
+   */
+  direction: "ltr" | "rtl";
+  /**
+   * Language flag image path
+   */
+  flag?: string;
+};
+
+type LocaleCodes = {
+  /**
+   * The object key is the locale code itself
+   */
+  [localeCode: string]: LocaleCode;
+};
+
+/**
+ * Lang mode is the type of languages that will be rendered
+ *
+ * If type is array, then the structure of the data will be [name][index][localeCode] = $localeCode
+ * If type is object, then the structure of the data will be [name][localeCode] = $localeCode
+ *
+ * @default auto detected
+ */
+type LangMode = "array" | "object";
+
+type ApplicationConfigurations = {
+  /**
+   * Application general configurations
+   */
+  app?: ApplicationOptions;
+  /**
+   * Localization Configurations
+   */
+  localization?: LocalizationConfigurations & {
+    /**
+     * Lang mode is the type of languages that will be rendered
+     *
+     * If type is array, then the structure of the data will be [name][index][localeCode] = $localeCode
+     * If type is object, then the structure of the data will be [name][localeCode] = $localeCode
+     */
+    langMode?: LangMode;
+    /**
+     * Locale Codes
+     */
+    locales?: LocaleCodes;
+  };
+  /**
+   * Router configurations
+   */
+  router?: RouterConfigurations;
+  /**
+   * Http configurations
+   */
+  endpoint?: ReactHttpConfigurations;
+  /**
+   * Cache configurations
+   */
+  cache?: CacheConfigurations;
+  /**
+   * Encryption configurations
+   */
+  encryption?: EncryptionConfigurations;
+  /**
+   * Helmet Configurations
+   */
+  helmet?: HelmetConfigurations;
+  /**
+   * Any other generic configurations
+   */
+  [configKey: string]: any;
+};
+```
+
+### Http configurations
+
+Works exactly as document in [Mongez Http](https://github.com/hassanzohdy/mongez-http#http-configurations-list), except that `MR` covers the `Authorization` header automatically based on current user state whether is logged in or not.
+
+Also don't forget to add `endpoint.apiKey` if your backend requires for unauthorized users an api key.
+
+### Router Configurations
+
+Not much here to talk about (So far), only locale codes list that's needed by `MRR` is set automatically if `locales` object is defined in `localization` object.
+
+### Get current app info
+
+To get a piece of information of the app, use `current` utility.
+
+```ts
+import { current } from '@mongez/react';
+
+console.log(current('direction'));
+console.log(current('appName'));
+console.log(current('route'));
+console.log(current('localeCode'));
+console.log(current('locale'));
+```
+
+## Change Log
+
+- 1.0.13 (11 Jan 2022)
+  - Added [Current Utility](#get-current-app-info)
+  - Changed `locales` key in configurations to be set in `localization.locales`

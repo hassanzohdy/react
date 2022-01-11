@@ -1,5 +1,6 @@
+import { setCurrent } from "./current";
 import { LocaleCode } from "./../types";
-import { appConfigurations } from "../config";
+import { getAppConfig } from "../config/appConfigurations";
 
 /**
  * Update Application locale code
@@ -8,13 +9,16 @@ import { appConfigurations } from "../config";
  * @returns {void}
  */
 export default function updateAppLocale(localeCode: string) {
-  if (!appConfigurations.locales || !appConfigurations.locales[localeCode])
-    return;
+  const localeCodeData: LocaleCode = getAppConfig(
+    `localization.locales.${localeCode}`
+  );
+
+  if (!localeCode) return;
 
   const htmlElement = document.documentElement;
-  const localeCodeData: LocaleCode = appConfigurations.locales[localeCode];
 
-  appConfigurations.currentLocaleCode = localeCode;
+  setCurrent("locale", localeCodeData);
+  setCurrent("localeCode", localeCode);
 
   htmlElement.setAttribute("lang", localeCode);
   htmlElement.setAttribute("dir", localeCodeData.direction);
