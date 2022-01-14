@@ -1,6 +1,7 @@
 import { setCurrent } from "./current";
 import { LocaleCode } from "./../types";
 import { getAppConfig } from "../config/appConfigurations";
+import { setCurrentLocaleCode } from "@mongez/localization";
 
 /**
  * Update Application locale code
@@ -9,17 +10,21 @@ import { getAppConfig } from "../config/appConfigurations";
  * @returns {void}
  */
 export default function updateAppLocale(localeCode: string) {
+  if (!localeCode) return;
+
   const localeCodeData: LocaleCode = getAppConfig(
     `localization.locales.${localeCode}`
   );
 
-  if (!localeCode) return;
-
   const htmlElement = document.documentElement;
 
-  setCurrent("locale", localeCodeData);
+  htmlElement.setAttribute("lang", localeCode);
   setCurrent("localeCode", localeCode);
 
-  htmlElement.setAttribute("lang", localeCode);
+  setCurrentLocaleCode(localeCode);
+
+  if (!localeCodeData) return;
+
+  setCurrent("locale", localeCodeData);
   htmlElement.setAttribute("dir", localeCodeData.direction);
 }
