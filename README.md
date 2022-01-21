@@ -333,7 +333,33 @@ console.log(current('localeCode'));
 console.log(current('locale'));
 ```
 
+## Use Event Hook
+
+This hook allows you to use [Mongez Events](https://github.com/hassanzohdy/mongez-events) and clean it up on component unmount.
+
+```tsx
+import React from 'react';
+import events from '@mongez/events';
+import { useEvent } from '@mongez/react';
+
+export default function MyComponent() {
+  const [value, setValue] = React.useState(1);
+  useEvent(events.subscribe('some-event.change', () => {
+    setValue(value + 1);
+  }))
+
+  return (
+    <h1>My Component Rendered {value} times</h1>
+  )
+} 
+```
+
+Can be quite useful with all Mongez Packages Events Like router events, form events http events and so on.
+
 ## Change Log
+
+- 1.0.18 (22 Jan 2022)
+  - Added [useEvent](#use-event-hook) hook.
 
 - 1.0.13 (11 Jan 2022)
   - Added [Current Utility](#get-current-app-info)

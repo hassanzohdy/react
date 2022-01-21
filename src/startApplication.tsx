@@ -34,7 +34,7 @@ export default function startApplication(options: ApplicationOptions = {}) {
   }
 
   // on locale code change, update app locale code
-  routerEvents.onLocaleCodeChange((localeCode) => {
+  routerEvents.onLocaleCodeChange((localeCode: string) => {
     updateAppLocale(localeCode);
   });
 

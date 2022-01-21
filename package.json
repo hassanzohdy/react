@@ -1,6 +1,6 @@
 {
     "name": "@mongez/react",
-    "version": "1.0.17",
+    "version": "1.0.18",
     "description": "A React App Manager",
     "main": "src/index.ts",
     "dependencies": {
@@ -17,7 +17,7 @@
         "@mongez/supportive-is": "^1.0.x",
         "@mongez/user": "^1.0.x",
         "clsx": "^1.1.1",
-        "web-vitals": "^2.1.3"
+        "web-vitals": "^2.1.4"
     },
     "repository": {
         "type": "git",
@@ -33,8 +33,8 @@
     "license": "MIT",
     "devDependencies": {
         "@types/react": "^17.0.38",
-        "axios": "^0.24.0",
+        "axios": "^0.25.0",
         "react": "^17.0.2",
-        "typescript": "^4.5.4"
+        "typescript": "^4.5.5"
     }
 }
