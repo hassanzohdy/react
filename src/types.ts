@@ -61,7 +61,7 @@ export type LocaleCode = {
   /**
    * Language flag image path
    */
-  flag?: string;
+  flag?: string | object;
 };
 
 export type LocaleCodes = {
