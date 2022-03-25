@@ -6,7 +6,7 @@ A react app manager for organizing and utilizing react apps
 
 ## Installation
 
-`yarn add @mognez/react`
+`yarn add @mongez/react`
 
 Or
 
@@ -19,10 +19,9 @@ First off, clear your `src/index.ts` or `src/index.js` file from everything insi
 Now, import the package in your `src/index.ts` or `src/index.js` file
 
 ```ts
-import startApplication from '@mongez/react';
+import startApplication from "@mongez/react";
 
 startApplication();
-
 ```
 
 Before we move on, please have a look at [Mongez React Router (MRR)](https://github.com/hassanzohdy/react-router) so you will have a better idea about lazy loaded apps and modules.
@@ -67,8 +66,8 @@ Let's create `shared/shared-provider.ts` file
 Now we go to `src/index.ts` file
 
 ```ts
-import './shared/shared-provider';
-import startApplication from '@mongez/react';
+import "./shared/shared-provider";
+import startApplication from "@mongez/react";
 
 startApplication();
 ```
@@ -97,21 +96,19 @@ Everything now is perfect, now let's create `apps-list.ts` file in `src/shared/a
 ```ts
 // src/shared/apps-list.ts
 
-import { setApps } from '@mongez/react-router';
+import { setApps } from "@mongez/react-router";
 
 // don't forget to add the module path alias as mentioned in MRR
-import frontOfficeApp from 'apps/front-office/front-office-modules.json';
+import frontOfficeApp from "apps/front-office/front-office-modules.json";
 
-setApps([
-  frontOfficeApp
-]);
+setApps([frontOfficeApp]);
 ```
 
 Let's head back to our `shared-provider.ts` file and import our `apps-list`.
 
 ```ts
 // src/shared-provider.ts
-import './apps-list';
+import "./apps-list";
 ```
 
 Now let's create our home module.
@@ -137,7 +134,7 @@ Let's import our `routes.ts` file in the home provider.
 
 ```ts
 // src/apps/front-office/home/provider.ts
-import './routes';
+import "./routes";
 ```
 
 Now in our `routes.ts` file let's add our home page route.
@@ -145,10 +142,10 @@ Now in our `routes.ts` file let's add our home page route.
 ```ts
 // src/apps/front-office/home/routes.ts
 
-import router from '@mongez/react-router';
-import HomePage from './components/HomePage';
+import router from "@mongez/react-router";
+import HomePage from "./components/HomePage";
 
-router.add('/', HomePage);
+router.add("/", HomePage);
 ```
 
 ## Creating our base configurations
@@ -324,13 +321,13 @@ Not much here to talk about (So far), only locale codes list that's needed by `M
 To get a piece of information of the app, use `current` utility.
 
 ```ts
-import { current } from '@mongez/react';
+import { current } from "@mongez/react";
 
-console.log(current('direction'));
-console.log(current('appName'));
-console.log(current('route'));
-console.log(current('localeCode'));
-console.log(current('locale'));
+console.log(current("direction"));
+console.log(current("appName"));
+console.log(current("route"));
+console.log(current("localeCode"));
+console.log(current("locale"));
 ```
 
 ## Use Event Hook
@@ -338,26 +335,28 @@ console.log(current('locale'));
 This hook allows you to use [Mongez Events](https://github.com/hassanzohdy/mongez-events) and clean it up on component unmount.
 
 ```tsx
-import React from 'react';
-import events from '@mongez/events';
-import { useEvent } from '@mongez/react';
+import React from "react";
+import events from "@mongez/events";
+import { useEvent } from "@mongez/react";
 
 export default function MyComponent() {
   const [value, setValue] = React.useState(1);
-  useEvent(events.subscribe('some-event.change', () => {
-    setValue(value + 1);
-  }))
+  useEvent(
+    () => events.subscribe("some-event.change", () => {
+      setValue(value + 1);
+    })
+  );
 
-  return (
-    <h1>My Component Rendered {value} times</h1>
-  )
-} 
+  return <h1>My Component Rendered {value} times</h1>;
+}
 ```
 
 Can be quite useful with all Mongez Packages Events Like router events, form events http events and so on.
 
 ## Change Log
 
+- 1.0.20 (25 Mar 2022)
+  - Fixed `useEvent` callback.
 - 1.0.18 (22 Jan 2022)
   - Added [useEvent](#use-event-hook) hook.
 

@@ -6,8 +6,9 @@ import { EventSubscription } from "@mongez/events";
  * The event subscription will be called only after component first render.
  * On component unmount, the even will be removed from the event loop for better performance.
  */
-export default function useEvent(eventSubscription: EventSubscription) {
+export default function useEvent(eventCallback: () => EventSubscription) {
   React.useEffect(() => {
-    return eventSubscription.unsubscribe();
+    const subscription = eventCallback();
+    return subscription.unsubscribe();
   }, []);
 }
