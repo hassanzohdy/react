@@ -1,6 +1,6 @@
 {
     "name": "@mongez/react",
-    "version": "1.0.21",
+    "version": "1.0.23",
     "description": "A React App Manager",
     "main": "src/index.ts",
     "dependencies": {

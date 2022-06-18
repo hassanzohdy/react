@@ -27,4 +27,10 @@ export default function updateAppLocale(localeCode: string) {
 
   setCurrent("locale", localeCodeData);
   htmlElement.setAttribute("dir", localeCodeData.direction);
+
+  if (localeCodeData.direction === 'rtl') {
+    htmlElement.classList.add('rtl');
+  } else {
+    htmlElement.classList.remove('rtl');
+  }
 }

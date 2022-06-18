@@ -31,6 +31,13 @@ export type ApplicationOptions = {
    * @default true
    */
   detectDarkMode?: boolean;
+
+  /**
+   * Determine whether to use the application in strict mode
+   *
+   * @default true
+   */
+  strict?: true;
 };
 
 export type ReactHttpConfigurations = HttpConfigurations & {

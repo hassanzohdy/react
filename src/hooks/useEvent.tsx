@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect } from "react";
 import { EventSubscription } from "@mongez/events";
 
 /**
@@ -7,8 +7,8 @@ import { EventSubscription } from "@mongez/events";
  * On component unmount, the even will be removed from the event loop for better performance.
  */
 export default function useEvent(eventCallback: () => EventSubscription) {
-  React.useEffect(() => {
+  useEffect(() => {
     const subscription = eventCallback();
-    return subscription.unsubscribe();
+    return () => subscription.unsubscribe();
   }, []);
 }
