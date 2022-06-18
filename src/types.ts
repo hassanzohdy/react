@@ -37,7 +37,7 @@ export type ApplicationOptions = {
    *
    * @default true
    */
-  strict?: true;
+  strict?: boolean;
 };
 
 export type ReactHttpConfigurations = HttpConfigurations & {
