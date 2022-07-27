@@ -23,7 +23,7 @@ export default function detectDeviceAndBrowser() {
 
     let isMobileOf: Object = Is.mobile;
 
-    for (const deviceType of ["ios", "andriod", "ipad", "iphone"]) {
+    for (const deviceType of ["ios", "android", "ipad", "iphone"]) {
       if (isMobileOf[deviceType] && isMobileOf[deviceType]()) {
         classesList.add(deviceType);
       }

@@ -341,8 +341,8 @@ import { useEvent } from "@mongez/react";
 
 export default function MyComponent() {
   const [value, setValue] = React.useState(1);
-  useEvent(
-    () => events.subscribe("some-event.change", () => {
+  useEvent(() =>
+    events.subscribe("some-event.change", () => {
       setValue(value + 1);
     })
   );
@@ -358,6 +358,7 @@ Can be quite useful with all Mongez Packages Events Like router events, form eve
 - 1.0.20 (25 Mar 2022)
   - Fixed `useEvent` callback.
 - 1.0.18 (22 Jan 2022)
+
   - Added [useEvent](#use-event-hook) hook.
 
 - 1.0.13 (11 Jan 2022)
