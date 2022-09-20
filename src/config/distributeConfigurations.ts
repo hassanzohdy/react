@@ -1,13 +1,11 @@
-import events from "@mongez/events";
-import { getCurrentUser } from "@mongez/user";
-import { ApplicationConfigurations } from "../types";
-import { setHttpConfigurations } from "@mongez/http";
-import updateAppLocale from "../utils/updateAppLocale";
 import { setCacheConfigurations } from "@mongez/cache";
-import { setRouterConfigurations } from "@mongez/react-router";
 import { setEncryptionConfigurations } from "@mongez/encryption";
-import { setHelmetConfigurations } from "@mongez/react-helmet";
+import events from "@mongez/events";
 import { setLocalizationConfigurations } from "@mongez/localization";
+import { setHelmetConfigurations } from "@mongez/react-helmet";
+import { setRouterConfigurations } from "@mongez/react-router";
+import { ApplicationConfigurations } from "../types";
+import updateAppLocale from "../utils/updateAppLocale";
 
 export default function distributeConfigurations(
   appConfigurations: ApplicationConfigurations
@@ -48,27 +46,6 @@ export default function distributeConfigurations(
 
   if (appConfigurations.helmet) {
     setHelmetConfigurations(appConfigurations.helmet);
-  }
-
-  if (appConfigurations.endpoint) {
-    if (
-      appConfigurations.endpoint.auth &&
-      !appConfigurations.endpoint.setAuthorizationHeader
-    ) {
-      appConfigurations.endpoint.setAuthorizationHeader = () => {
-        const user = getCurrentUser();
-
-        if (user && user.isLoggedIn()) {
-          return `Bearer ${user.getAccessToken()}`;
-        } else if (appConfigurations?.endpoint?.apiKey) {
-          return `key ${appConfigurations.endpoint.apiKey}`;
-        }
-
-        return "";
-      };
-    }
-
-    setHttpConfigurations(appConfigurations.endpoint);
   }
 
   events.trigger("app.configurations", appConfigurations);

@@ -1,10 +1,9 @@
-import { ReportHandler } from "web-vitals";
-import { HttpConfigurations } from "@mongez/http";
 import { CacheConfigurations } from "@mongez/cache";
-import { RouterConfigurations } from "@mongez/react-router";
-import { HelmetConfigurations } from "@mongez/react-helmet";
 import { EncryptionConfigurations } from "@mongez/encryption";
 import { LocalizationConfigurations } from "@mongez/localization";
+import { HelmetConfigurations } from "@mongez/react-helmet";
+import { RouterConfigurations } from "@mongez/react-router";
+import { ReportHandler } from "web-vitals";
 
 export type ApplicationOptions = {
   /**
@@ -38,22 +37,6 @@ export type ApplicationOptions = {
    * @default true
    */
   strict?: boolean;
-};
-
-export type ReactHttpConfigurations = HttpConfigurations & {
-  /**
-   * If set to true, then each request will determine the Authorization Header Based on current user state
-   * If user is logged in, then A `Bearer xxx` token wil lbe sent in `Authorization` Header,
-   * Otherwise, if `apiKey` is set, then a `key xxx` wil lbe sent in `Authorization` Header.
-   *
-   * @default true
-   */
-  auth?: boolean;
-  /**
-   * Sent in every request in the `Authorization` header if user is not logged in
-   * Will not be used if no apiKey is passed or if `auth` prop is set to false
-   */
-  apiKey?: string;
 };
 
 export type LocaleCode = {
@@ -113,10 +96,6 @@ export type ApplicationConfigurations = {
    * Router configurations
    */
   router?: RouterConfigurations;
-  /**
-   * Http configurations
-   */
-  endpoint?: ReactHttpConfigurations;
   /**
    * Cache configurations
    */

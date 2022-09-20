@@ -1,7 +1,7 @@
+import { getCurrentEndpoint } from "@mongez/http";
+import { AxiosResponse } from "axios";
 import React from "react";
 import useOnce from "./useOnce";
-import { AxiosResponse } from "axios";
-import { lastRequest } from "@mongez/http";
 
 type StateType = {
   value: AxiosResponse<any, any> | null;
@@ -9,7 +9,10 @@ type StateType = {
   isLoading: boolean;
 };
 
-export default function useRequest(promiseFunction: () => Promise<any>): any {
+export default function useRequest(
+  promiseFunction: () => Promise<any>,
+  endpoint = getCurrentEndpoint()
+): any {
   const [state, setState] = React.useState<StateType>({
     value: null,
     error: null,
@@ -35,13 +38,9 @@ export default function useRequest(promiseFunction: () => Promise<any>): any {
         });
       });
 
-    let request: any;
+    const currentRequest = endpoint.getLastRequest();
 
-    setTimeout(() => {
-      request = lastRequest();
-    }, 0);
-
-    return () => request.abort();
+    return currentRequest.abort;
   });
 
   return {
