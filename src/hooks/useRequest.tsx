@@ -40,7 +40,7 @@ export default function useRequest(
 
     const currentRequest = endpoint.getLastRequest();
 
-    return currentRequest.abort;
+    return () => currentRequest?.abort && currentRequest.abort();
   });
 
   return {
