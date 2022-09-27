@@ -1,3 +1,4 @@
+import { jsxConverter } from "@mongez/react-localization";
 import { Obj } from "@mongez/reinforcements";
 import { ApplicationConfigurations } from "../types";
 
@@ -5,7 +6,9 @@ let appConfigurations: ApplicationConfigurations = {
   endpoint: {
     auth: true,
   },
-  localization: {},
+  localization: {
+    converter: jsxConverter,
+  },
 };
 
 export function getAppConfig(key?: string, defaultValue?: any): any {

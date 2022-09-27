@@ -1,6 +1,6 @@
 {
     "name": "@mongez/react",
-    "version": "2.0.1",
+    "version": "2.0.2",
     "description": "A React App Manager",
     "main": "src/index.ts",
     "dependencies": {
@@ -13,7 +13,8 @@
         "@mongez/encryption": "^1.0.x",
         "@mongez/events": "^1.0.x",
         "@mongez/http": "^2.0.x",
-        "@mongez/localization": "^1.0.x",
+        "@mongez/localization": "^2.0.x",
+        "@mongez/react-localization": "^1.0.x",
         "@mongez/react-helmet": "1.0.x",
         "@mongez/react-router": "^1.0.x",
         "@mongez/reinforcements": "^1.0.x",
