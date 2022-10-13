@@ -10,21 +10,19 @@ import updateAppLocale from "../utils/updateAppLocale";
 export default function distributeConfigurations(
   appConfigurations: ApplicationConfigurations
 ) {
-  let localeCodesList: string[] = [];
-
-  if (appConfigurations.localization?.locales) {
-    localeCodesList = Object.keys(appConfigurations.localization.locales);
-  }
-
-  if (!appConfigurations.router) {
-    appConfigurations.router = {};
-  }
-
-  if (!appConfigurations.router?.localeCodes) {
-    appConfigurations.router.localeCodes = localeCodesList;
-  }
-
   if (appConfigurations.router) {
+    if (!appConfigurations.router.localeCodes) {
+      let localeCodesList: string[] = [];
+
+      if (appConfigurations.localization?.locales) {
+        localeCodesList = Object.keys(appConfigurations.localization.locales);
+      }
+
+      console.log(localeCodesList);
+
+      appConfigurations.router.localeCodes = localeCodesList;
+    }
+
     setRouterConfigurations(appConfigurations.router);
   }
 
