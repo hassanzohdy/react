@@ -18,8 +18,6 @@ export default function distributeConfigurations(
         localeCodesList = Object.keys(appConfigurations.localization.locales);
       }
 
-      console.log(localeCodesList);
-
       appConfigurations.router.localeCodes = localeCodesList;
     }
 
