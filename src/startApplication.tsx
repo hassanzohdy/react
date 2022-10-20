@@ -1,9 +1,9 @@
 import router, { routerEvents } from "@mongez/react-router";
-import { ApplicationOptions } from "./types";
 import { getAppConfig } from "./config";
+import { ApplicationOptions } from "./types";
 import detectDarkMode from "./utils/detectDarkMode";
-import reportWebVitals from "./utils/reportWebVitals";
 import detectDeviceAndBrowser from "./utils/detectDeviceAndBrowser";
+import reportWebVitals from "./utils/reportWebVitals";
 import updateAppLocale from "./utils/updateAppLocale";
 
 export default function startApplication(options: ApplicationOptions = {}) {

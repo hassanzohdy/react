@@ -30,7 +30,6 @@ export type ApplicationOptions = {
    * @default true
    */
   detectDarkMode?: boolean;
-
   /**
    * Determine whether to use the application in strict mode
    *
@@ -61,32 +60,11 @@ export type LocaleCodes = {
   [localeCode: string]: LocaleCode;
 };
 
-/**
- * Lang mode is the type of languages that will be rendered
- *
- * If type is array, then the structure of the data will be [name][index][localeCode] = $localeCode
- * If type is object, then the structure of the data will be [name][localeCode] = $localeCode
- *
- * @default auto detected
- */
-export type LangMode = "array" | "object";
-
 export type ApplicationConfigurations = {
-  /**
-   * Application general configurations
-   */
-  app?: ApplicationOptions;
   /**
    * Localization Configurations
    */
   localization?: LocalizationConfigurations & {
-    /**
-     * Lang mode is the type of languages that will be rendered
-     *
-     * If type is array, then the structure of the data will be [name][index][localeCode] = $localeCode
-     * If type is object, then the structure of the data will be [name][localeCode] = $localeCode
-     */
-    langMode?: LangMode;
     /**
      * Locale Codes
      */
@@ -114,7 +92,7 @@ export type ApplicationConfigurations = {
   [configKey: string]: any;
 };
 
-export type CurrentType = {
+export type Current = {
   /**
    * Current locale code
    */

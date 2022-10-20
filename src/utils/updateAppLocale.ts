@@ -1,13 +1,10 @@
-import { setCurrent } from "./current";
-import { LocaleCode } from "./../types";
-import { getAppConfig } from "../config/appConfigurations";
 import { setCurrentLocaleCode } from "@mongez/localization";
+import { getAppConfig } from "../config/appConfigurations";
+import { LocaleCode } from "./../types";
+import { setCurrent } from "./current";
 
 /**
  * Update Application locale code
- *
- * @param {string} localeCode
- * @returns {void}
  */
 export default function updateAppLocale(localeCode: string) {
   if (!localeCode) return;
@@ -28,9 +25,9 @@ export default function updateAppLocale(localeCode: string) {
   setCurrent("locale", localeCodeData);
   htmlElement.setAttribute("dir", localeCodeData.direction);
 
-  if (localeCodeData.direction === 'rtl') {
-    htmlElement.classList.add('rtl');
+  if (localeCodeData.direction === "rtl") {
+    htmlElement.classList.add("rtl");
   } else {
-    htmlElement.classList.remove('rtl');
+    htmlElement.classList.remove("rtl");
   }
 }

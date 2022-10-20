@@ -1,9 +1,5 @@
 import Is from "@mongez/supportive-is";
 
-interface Object {
-  [key: string]: Function;
-}
-
 export default function detectDeviceAndBrowser() {
   const classesList = document.documentElement.classList;
 
@@ -21,26 +17,23 @@ export default function detectDeviceAndBrowser() {
       }
     }
 
-    let isMobileOf: Object = Is.mobile;
+    const isMobileOf = Is.mobile;
 
-    for (const deviceType of ["ios", "android", "ipad", "iphone"]) {
-      if (isMobileOf[deviceType] && isMobileOf[deviceType]()) {
+    for (const deviceType in isMobileOf) {
+      if (isMobileOf[deviceType]()) {
         classesList.add(deviceType);
       }
     }
 
     if (windowSize <= 570) {
       classesList.add("mobile");
-      classesList.remove("desktop");
-      classesList.remove("tablet");
+      classesList.remove("desktop", "tablet");
     } else if (windowSize <= 1024) {
       classesList.add("tablet");
-      classesList.remove("desktop");
-      classesList.remove("mobile");
+      classesList.remove("desktop", "mobile");
     } else {
       classesList.add("desktop");
-      classesList.remove("mobile");
-      classesList.remove("tablet");
+      classesList.remove("mobile", "tablet");
     }
   };
 

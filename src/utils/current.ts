@@ -1,17 +1,17 @@
-import { CurrentType } from "../types";
 import {
-  getCurrentAppName,
   currentDirection,
   currentRoute,
+  getCurrentAppName,
 } from "@mongez/react-router";
+import { Current } from "../types";
 
-const currentData: CurrentType = {};
+const currentData: Current = {};
 
-export function setCurrent(key: keyof CurrentType, value: any): any {
+export function setCurrent(key: keyof Current, value: any): any {
   currentData[key] = value;
 }
 
-export function current(currentKey: keyof CurrentType): any {
+export function current(currentKey: keyof Current): any {
   if (currentKey === "direction") {
     return currentDirection();
   }

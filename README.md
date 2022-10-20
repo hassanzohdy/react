@@ -2,7 +2,7 @@
 
 A react app manager for organizing and utilizing react apps
 
-> It's highly recommended to use Typescript with your react apps, this package work with javascript though and the documentation will will be with typescript as well.
+> It's highly recommended to use Typescript with your react apps, this package works with javascript though and the documentation will be with typescript as well.
 
 ## Installation
 
@@ -165,7 +165,6 @@ Just an empty object for our configurations file, but what configurations can be
 
 Well, the following packages's configurations are configured from one place using `setAppConfigurations`
 
-- [Mongez Http](https://github.com/hassanzohdy/mongez-http#http-configurations-list)
 - [Mongez React Router](https://github.com/hassanzohdy/react-router#router-configurations)
 - [Mongez React Helmet](https://github.com/hassanzohdy/mongez-react-helmet#helmet-configurations-list)
 - [Mongez Localization](https://github.com/hassanzohdy/mongez-localization#configuration-setup)
@@ -181,33 +180,6 @@ import { RouterConfigurations } from "@mongez/react-router";
 import { HelmetConfigurations } from "@mongez/react-helmet";
 import { EncryptionConfigurations } from "@mongez/encryption";
 import { LocalizationConfigurations } from "@mongez/localization";
-
-type ApplicationOptions = {
-  /**
-   * Determine whether to enable debugging mode or not
-   *
-   * @default false
-   */
-  debug?: boolean;
-  /**
-   * Debug method that is passed to reportWebVitals function
-   *
-   * @default console.log
-   */
-  debugMethod?: ReportHandler;
-  /**
-   * Detect current used device and browser such as google chrome, ipad, tablet and so on, based on the current state of the browser and device, html tag class will be updated, i.e `chrome desktop` `safari ipad` and so on
-   *
-   * @default true
-   */
-  detectDeviceAndBrowser?: boolean;
-  /**
-   * Detect Dark Mode based on user's preferences, if found then a `dark` class will be added to html tag
-   *
-   * @default true
-   */
-  detectDarkMode?: boolean;
-};
 
 type LocaleCode = {
   /**
@@ -231,32 +203,11 @@ type LocaleCodes = {
   [localeCode: string]: LocaleCode;
 };
 
-/**
- * Lang mode is the type of languages that will be rendered
- *
- * If type is array, then the structure of the data will be [name][index][localeCode] = $localeCode
- * If type is object, then the structure of the data will be [name][localeCode] = $localeCode
- *
- * @default auto detected
- */
-type LangMode = "array" | "object";
-
 type ApplicationConfigurations = {
-  /**
-   * Application general configurations
-   */
-  app?: ApplicationOptions;
   /**
    * Localization Configurations
    */
   localization?: LocalizationConfigurations & {
-    /**
-     * Lang mode is the type of languages that will be rendered
-     *
-     * If type is array, then the structure of the data will be [name][index][localeCode] = $localeCode
-     * If type is object, then the structure of the data will be [name][localeCode] = $localeCode
-     */
-    langMode?: LangMode;
     /**
      * Locale Codes
      */
@@ -285,12 +236,6 @@ type ApplicationConfigurations = {
 };
 ```
 
-### Http configurations
-
-Works exactly as document in [Mongez Http](https://github.com/hassanzohdy/mongez-http#http-configurations-list), except that `MR` covers the `Authorization` header automatically based on current user state whether is logged in or not.
-
-Also don't forget to add `endpoint.apiKey` if your backend requires for unauthorized users an api key.
-
 ### Router Configurations
 
 Not much here to talk about (So far), only locale codes list that's needed by `MRR` is set automatically if `locales` object is defined in `localization` object.
@@ -302,44 +247,22 @@ To get a piece of information of the app, use `current` utility.
 ```ts
 import { current } from "@mongez/react";
 
-console.log(current("direction"));
+console.log(current("direction")); // ltr | rtl
 console.log(current("appName"));
 console.log(current("route"));
 console.log(current("localeCode"));
 console.log(current("locale"));
 ```
 
-## Use Event Hook
-
-This hook allows you to use [Mongez Events](https://github.com/hassanzohdy/mongez-events) and clean it up on component unmount.
-
-```tsx
-import React from "react";
-import events from "@mongez/events";
-import { useEvent } from "@mongez/react";
-
-export default function MyComponent() {
-  const [value, setValue] = React.useState(1);
-  useEvent(() =>
-    events.subscribe("some-event.change", () => {
-      setValue(value + 1);
-    })
-  );
-
-  return <h1>My Component Rendered {value} times</h1>;
-}
-```
-
-Can be quite useful with all Mongez Packages Events Like router events, form events http events and so on.
-
 ## Change Log
 
+- 2.0.5 (22 Oct 2022)
+  - Enhanced Docs
+  - Removed all hooks as it has been moved to [Mongez React Hooks](https://github.com/hassanzohdy/react-hooks).
 - 1.0.20 (25 Mar 2022)
   - Fixed `useEvent` callback.
 - 1.0.18 (22 Jan 2022)
-
-  - Added [useEvent](#use-event-hook) hook.
-
+  - Added `useEvent` hook.
 - 1.0.13 (11 Jan 2022)
   - Added [Current Utility](#get-current-app-info)
   - Changed `locales` key in configurations to be set in `localization.locales`
