@@ -1,18 +1,16 @@
 {
     "name": "@mongez/react",
-    "version": "2.0.2",
+    "version": "2.0.5",
     "description": "A React App Manager",
     "main": "src/index.ts",
-    "dependencies": {
-        "clsx": "^1.1.1"
-    },
     "peerDependencies": {
         "@mongez/cache": "^1.0.x",
         "@mongez/config": "^1.0.x",
         "@mongez/dom": "^1.x.x",
         "@mongez/encryption": "^1.0.x",
         "@mongez/events": "^1.0.x",
-        "@mongez/localization": "^1.0.x",
+        "@mongez/localization": "^2.0.x",
+        "@mongez/react-localization": "^1.0.x",
         "@mongez/react-helmet": "1.0.x",
         "@mongez/react-router": "^1.0.x",
         "@mongez/reinforcements": "^1.0.x",
@@ -33,9 +31,8 @@
     "author": "hassanzohdy",
     "license": "MIT",
     "devDependencies": {
-        "@types/react": "^17.0.38",
-        "axios": "^0.25.0",
-        "react": "^17.0.2",
+        "@types/react": ">17.0.0",
+        "react": ">17",
         "typescript": "^4.5.5"
     }
 }

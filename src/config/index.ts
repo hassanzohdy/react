@@ -2,8 +2,8 @@ import config from "@mongez/config";
 import { Obj } from "@mongez/reinforcements";
 import { ApplicationConfigurations } from "../types";
 import {
-  getAppConfigurations,
   getAppConfig,
+  getAppConfigurations,
   updateConfigurationsList,
 } from "./appConfigurations";
 import distributeConfigurations from "./distributeConfigurations";
