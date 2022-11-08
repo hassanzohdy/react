@@ -11,14 +11,23 @@ export default function distributeConfigurations(
   appConfigurations: ApplicationConfigurations
 ) {
   if (appConfigurations.router) {
-    if (!appConfigurations.router.localeCodes) {
+    if (!appConfigurations.router.localization?.localeCodes) {
       let localeCodesList: string[] = [];
+
+      if (!appConfigurations.router.localization) {
+        appConfigurations.router.localization = {};
+      }
 
       if (appConfigurations.localization?.locales) {
         localeCodesList = Object.keys(appConfigurations.localization.locales);
       }
 
-      appConfigurations.router.localeCodes = localeCodesList;
+      appConfigurations.router.localization.localeCodes = localeCodesList;
+
+      if (appConfigurations.localization?.defaultLocaleCode) {
+        appConfigurations.router.localization.defaultLocaleCode =
+          appConfigurations.localization.defaultLocaleCode;
+      }
     }
 
     setRouterConfigurations(appConfigurations.router);

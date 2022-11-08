@@ -1,6 +1,6 @@
 {
     "name": "@mongez/react",
-    "version": "2.0.7",
+    "version": "2.1.1",
     "description": "A React App Manager",
     "main": "src/index.ts",
     "peerDependencies": {
@@ -12,11 +12,10 @@
         "@mongez/localization": "^2.x.x",
         "@mongez/react-localization": "^1.x.x",
         "@mongez/react-helmet": "1.x.x",
-        "@mongez/react-router": "^1.x.x",
+        "@mongez/react-router": "^2.x.x",
         "@mongez/reinforcements": "^2.x.x",
         "@mongez/supportive-is": "^1.x.x",
-        "@mongez/user": "^1.x.x",
-        "web-vitals": "^2.1.x | ^3.x.x"
+        "web-vitals": "> 2"
     },
     "repository": {
         "type": "git",

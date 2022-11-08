@@ -1,8 +1,4 @@
-import {
-  currentDirection,
-  currentRoute,
-  getCurrentAppName,
-} from "@mongez/react-router";
+import router from "@mongez/react-router";
 import { Current } from "../types";
 
 const currentData: Current = {};
@@ -13,15 +9,16 @@ export function setCurrent(key: keyof Current, value: any): any {
 
 export function current(currentKey: keyof Current): any {
   if (currentKey === "direction") {
-    return currentDirection();
+    // get the current direction from html dir attribute
+    return document.documentElement.dir || "ltr";
   }
 
   if (currentKey === "appName") {
-    return getCurrentAppName();
+    return router.getCurrentApp()?.name;
   }
 
   if (currentKey === "route") {
-    return currentRoute();
+    return router.getCurrentRoute();
   }
 
   return currentData[currentKey];
