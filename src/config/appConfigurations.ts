@@ -1,5 +1,5 @@
 import { jsxConverter } from "@mongez/react-localization";
-import { Obj } from "@mongez/reinforcements";
+import { get } from "@mongez/reinforcements";
 import { ApplicationConfigurations } from "../types";
 
 let appConfigurations: ApplicationConfigurations = {
@@ -9,7 +9,7 @@ let appConfigurations: ApplicationConfigurations = {
 };
 
 export function getAppConfig(key: string, defaultValue: any = null): any {
-  return Obj.get(appConfigurations, key, defaultValue);
+  return get(appConfigurations, key, defaultValue);
 }
 
 export function updateConfigurationsList(

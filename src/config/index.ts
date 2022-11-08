@@ -1,5 +1,5 @@
 import config from "@mongez/config";
-import { Obj } from "@mongez/reinforcements";
+import { merge } from "@mongez/reinforcements";
 import { ApplicationConfigurations } from "../types";
 import {
   getAppConfig,
@@ -13,7 +13,7 @@ export { getAppConfigurations, getAppConfig };
 export function setAppConfigurations(
   newConfigurationsList: ApplicationConfigurations
 ) {
-  const updatedAppConfigurations: ApplicationConfigurations = Obj.merge(
+  const updatedAppConfigurations: ApplicationConfigurations = merge(
     getAppConfigurations(),
     newConfigurationsList
   );
