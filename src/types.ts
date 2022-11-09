@@ -30,12 +30,6 @@ export type ApplicationOptions = {
    * @default true
    */
   detectDarkMode?: boolean;
-  /**
-   * Determine whether to use the application in strict mode
-   *
-   * @default true
-   */
-  strict?: boolean;
 };
 
 export type LocaleCode = {

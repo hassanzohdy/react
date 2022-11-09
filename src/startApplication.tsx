@@ -12,7 +12,6 @@ export default function startApplication(options: ApplicationOptions = {}) {
     debugMethod: getAppConfig("app.debugMethod", console.log),
     detectDeviceAndBrowser: getAppConfig("app.detectDeviceAndBrowser", true),
     detectDarkMode: getAppConfig("app.detectDarkMode", true),
-    strict: getAppConfig("app.strict", false),
   };
 
   options = { ...defaultOptions, ...options };
@@ -39,5 +38,9 @@ export default function startApplication(options: ApplicationOptions = {}) {
     updateAppLocale(localeCode);
   });
 
-  router.scan(options.strict);
+  routerEvents.onInitialLocaleDetection((localeCode: string) => {
+    updateAppLocale(localeCode);
+  });
+
+  router.scan();
 }
