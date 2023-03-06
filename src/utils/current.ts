@@ -8,6 +8,10 @@ export function setCurrent(key: keyof Current, value: any): any {
 }
 
 export function current(currentKey: keyof Current): any {
+  if (currentData[currentKey]) {
+    return currentData[currentKey];
+  }
+
   if (currentKey === "direction") {
     // get the current direction from html dir attribute
     return document.documentElement.dir || "ltr";

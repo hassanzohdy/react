@@ -1,16 +1,12 @@
 import { jsxConverter } from "@mongez/react-localization";
-import { get } from "@mongez/reinforcements";
 import { ApplicationConfigurations } from "../types";
 
 let appConfigurations: ApplicationConfigurations = {
   localization: {
     converter: jsxConverter,
+    locales: {},
   },
 };
-
-export function getAppConfig(key: string, defaultValue: any = null): any {
-  return get(appConfigurations, key, defaultValue);
-}
 
 export function updateConfigurationsList(
   newConfigurationsList: ApplicationConfigurations

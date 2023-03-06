@@ -165,23 +165,14 @@ Just an empty object for our configurations file, but what configurations can be
 
 Well, the following packages's configurations are configured from one place using `setAppConfigurations`
 
-- [Mongez React Router](https://github.com/hassanzohdy/react-router#router-configurations)
-- [Mongez React Helmet](https://github.com/hassanzohdy/mongez-react-helmet#helmet-configurations-list)
 - [Mongez Localization](https://github.com/hassanzohdy/mongez-localization#configuration-setup)
-- [Mongez encryption](https://github.com/hassanzohdy/mongez-encryption#encryption-configurations)
-- [Mongez Cache](https://github.com/hassanzohdy/mongez-cache#setting-key-prefix)
 
 The entire app configurations as follows:
 
 ```ts
-import { ReportHandler } from "web-vitals";
-import { CacheConfigurations } from "@mongez/cache";
-import { RouterConfigurations } from "@mongez/react-router";
-import { HelmetConfigurations } from "@mongez/react-helmet";
-import { EncryptionConfigurations } from "@mongez/encryption";
 import { LocalizationConfigurations } from "@mongez/localization";
 
-type LocaleCode = {
+export type LocaleCode = {
   /**
    * Locale code name i.e English | Arabic..etc
    */
@@ -193,17 +184,17 @@ type LocaleCode = {
   /**
    * Language flag image path
    */
-  flag?: string;
+  flag?: string | object;
 };
 
-type LocaleCodes = {
+export type LocaleCodes = {
   /**
    * The object key is the locale code itself
    */
   [localeCode: string]: LocaleCode;
 };
 
-type ApplicationConfigurations = {
+export type ApplicationConfigurations = {
   /**
    * Localization Configurations
    */
@@ -211,34 +202,14 @@ type ApplicationConfigurations = {
     /**
      * Locale Codes
      */
-    locales?: LocaleCodes;
+    locales: LocaleCodes;
   };
-  /**
-   * Router configurations
-   */
-  router?: RouterConfigurations;
-  /**
-   * Cache configurations
-   */
-  cache?: CacheConfigurations;
-  /**
-   * Encryption configurations
-   */
-  encryption?: EncryptionConfigurations;
-  /**
-   * Helmet Configurations
-   */
-  helmet?: HelmetConfigurations;
   /**
    * Any other generic configurations
    */
   [configKey: string]: any;
 };
 ```
-
-### Router Configurations
-
-Not much here to talk about (So far), only locale codes list that's needed by `MRR` is set automatically if `locales` object is defined in `localization` object.
 
 ### Get current app info
 
@@ -256,6 +227,9 @@ console.log(current("locale"));
 
 ## Change Log
 
+- 3.0.0 (06 Mar 2023)
+  - Removed unnecessary packages.
+  - Updated dependencies.
 - 2.0.5 (22 Oct 2022)
   - Enhanced Docs
   - Removed all hooks as it has been moved to [Mongez React Hooks](https://github.com/hassanzohdy/react-hooks).
