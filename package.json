@@ -1,6 +1,6 @@
 {
     "name": "@mongez/react",
-    "version": "3.0.2",
+    "version": "3.0.3",
     "description": "A React App Manager",
     "main": "src/index.ts",
     "peerDependencies": {
