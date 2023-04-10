@@ -5,13 +5,15 @@ import { setCurrent } from "./current";
 /**
  * Update Application locale code
  */
-export default function updateAppLocale(localeCode: string) {
+export function updateAppLocale(localeCode: string) {
   if (!localeCode) return;
 
   const localeCodeData =
     getAppConfigurations().localization?.locales[localeCode];
 
   const htmlElement = document.documentElement;
+
+  console.log(localeCodeData);
 
   htmlElement.setAttribute("lang", localeCode);
   setCurrent("localeCode", localeCode);

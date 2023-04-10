@@ -1,6 +1,6 @@
 import { setLocalizationConfigurations } from "@mongez/localization";
 import { ApplicationConfigurations } from "../types";
-import updateAppLocale from "../utils/updateAppLocale";
+import { updateAppLocale } from "../utils/updateAppLocale";
 
 export default function distributeConfigurations(
   appConfigurations: ApplicationConfigurations
