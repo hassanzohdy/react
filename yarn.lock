@@ -2,89 +2,33 @@
 # yarn lockfile v1
 
 
-"@mongez/cache@^1.x.x":
-  version "1.1.6"
-  resolved "https://registry.yarnpkg.com/@mongez/cache/-/cache-1.1.6.tgz#0a8bb2ffb82d304de0d61fb2a0cb0c6017c3d431"
-  integrity sha512-EDwOYZpedWVnP8vPVK/jiWGWholrZPIt4aJu4TBERpp2+Yd1IqGRWhDruZUFQa4sYhUiH/kFH6p6VBxX735/yA==
-  dependencies:
-    "@mongez/encryption" "^1.0.x"
-
 "@mongez/concat-route@^1.x.x":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@mongez/concat-route/-/concat-route-1.0.0.tgz#c2c0d26274c6135914be5f64670a2986aa443ce2"
   integrity sha512-yl0kNPilESIk3GcdZtgChfpfVc8VzqQmHTZ+H12wuxACWl7hbA9jK8xQrjvdh+IIxd4Wzr4eaDfrpRpPTvwSQw==
 
-"@mongez/config@^1.x.x":
-  version "1.0.24"
-  resolved "https://registry.yarnpkg.com/@mongez/config/-/config-1.0.24.tgz#42d5e45492899e489b864c997517cb83f42401bb"
-  integrity sha512-nnDqHfWZ9pecHzDVxHSMnxqptqXubLn84P8B2wxYXUelcNYTCADVz3j6cBrA1XFrMp8qwtqXL8k2SzBaJyJPVA==
-  dependencies:
-    "@mongez/reinforcements" "^2.x.x"
-
-"@mongez/dom@^1.x.x":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@mongez/dom/-/dom-1.1.0.tgz#d65ce5098d81e2d2aeec7140800fceba5048e9f9"
-  integrity sha512-tC4AXKAuC8ieHH9Ziq6jBlTr0jUmzs0FONlDeDISWzIXxQ39vplcnMjrc0DGrI6RlbvV66qJ0JZNDOLS66laFA==
-
-"@mongez/encryption@^1.0.x", "@mongez/encryption@^1.x.x":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@mongez/encryption/-/encryption-1.0.4.tgz#91b9c78ddadf29ce5be35fa8a52f9eecbf371008"
-  integrity sha512-g97rfpCUQEYVSPo0Y8WETHhmoK+6/vZ+1antlym2UQbBvIjXquaAlPB8bqnC+ry7JsCmUIpGatIp6m4S2Xa8Lg==
-  dependencies:
-    crypto-js "^4.0.0"
-
-"@mongez/events@1.0.x", "@mongez/events@^1.x.x":
+"@mongez/events@^1.x.x":
   version "1.0.9"
   resolved "https://registry.yarnpkg.com/@mongez/events/-/events-1.0.9.tgz#8d9c3d3830c5973740b76869ac3a08d64a7fbdbc"
   integrity sha512-6vJaOeG6RE2Tzv9MsWVfBAqr5K/qESpymhlTPca5qs0bX4MGhHxAcBthhqByf6MJlAXwTGbBzoe9kmE6wGp3VA==
 
-"@mongez/localization@^2.x.x":
-  version "2.0.7"
-  resolved "https://registry.yarnpkg.com/@mongez/localization/-/localization-2.0.7.tgz#f3656247103dfa12ee3cb0350f491529239f8759"
-  integrity sha512-iBz6kbNPHocEcxOfH5oWTZtA7RBKupi/oEnugtUDanohyY+/1Wzv+FuxkbMJNfB9LklYDa2FLRt7M1tfuEz4XQ==
-  dependencies:
-    "@mongez/events" "1.0.x"
-    "@mongez/reinforcements" "2.x.x"
-
-"@mongez/react-helmet@1.x.x":
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/@mongez/react-helmet/-/react-helmet-1.0.9.tgz#b6a9c699a38bb7bbe83f9f198b9b06eb1d9875e5"
-  integrity sha512-QqA7XQrOgHAIR6n8ICmluRubtpPlBfnzE0UkBvDkMuVswJonjcILvIwhi5qn4R+eX0c6qMD6plB/WZRty//SwQ==
-
-"@mongez/react-localization@^1.x.x":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@mongez/react-localization/-/react-localization-1.0.4.tgz#b36ad4519d9900b25e2602778f9306cc993341d6"
-  integrity sha512-uMgqPlv2+t5DiOuIM7vJntanf/3KRzX4Fhk619KuVpwISYyxhLn6TmRLcXO2ff6TcXudeImXNBIInVv2+3H54Q==
-
-"@mongez/react-router@^2.x.x":
-  version "2.0.17"
-  resolved "https://registry.yarnpkg.com/@mongez/react-router/-/react-router-2.0.17.tgz#a906c309f8a87238e1842b11e9d2568587c771b8"
-  integrity sha512-jpMdhsu9EEk8l+EqHKO9CgMxGJQNhY+LBDd3DvEEcc1V5pGYCv4XCTnU5ZZEGvla/Ik6WkWNGzCSkaSeaeSIDg==
+"@mongez/react-router@^2.1.21":
+  version "2.1.21"
+  resolved "https://registry.yarnpkg.com/@mongez/react-router/-/react-router-2.1.21.tgz#65b09dfa44bfcb1703311dcd2c03588854c82c1b"
+  integrity sha512-EkUSk82wwjjM9YRrHCiNqyV0svZ94cmaW8XSnYsck+8NaYaty+r3wewhgPZf1PvDf1H83Wx+LR4Lia8WClpzPQ==
   dependencies:
     "@mongez/concat-route" "^1.x.x"
     "@mongez/events" "^1.x.x"
-
-"@mongez/reinforcements@2.x.x", "@mongez/reinforcements@^2.x.x":
-  version "2.2.2"
-  resolved "https://registry.yarnpkg.com/@mongez/reinforcements/-/reinforcements-2.2.2.tgz#2a829992b9584832ef1bf209057fafe07f707353"
-  integrity sha512-WV6cSv1ZVLb+H+orMfTUVKHU1cd5nebXe5ahe0w5rFBRj9mj7dxhuKTZ0zU87jestPG7/Whx8/Imey1mCjADzg==
-  dependencies:
-    "@mongez/supportive-is" "^1.0.6"
-
-"@mongez/supportive-is@^1.0.6", "@mongez/supportive-is@^1.x.x":
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/@mongez/supportive-is/-/supportive-is-1.0.9.tgz#c20dc9eb8c0db9dfdbfd73f83ed49d5552f92d1c"
-  integrity sha512-6ejPqrcSlZbazndWg822lcDqfBcMtvYbhvxRef+KzG6faT38Kc8JVj7JHcIGyBMPEPrjr88Lk+O64XnxKBzZrg==
 
 "@types/prop-types@*":
   version "15.7.4"
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.4.tgz#fcf7205c25dff795ee79af1e30da2c9790808f11"
   integrity sha512-rZ5drC/jWjrArrS8BR6SIr4cWpW09RNTYt9AMZo3Jwwif+iacXAqgVjm0B0Bv/S1jhDXKHqRVNCbACkJ89RAnQ==
 
-"@types/react@>17.0.0":
-  version "18.0.25"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.0.25.tgz#8b1dcd7e56fe7315535a4af25435e0bb55c8ae44"
-  integrity sha512-xD6c0KDT4m7n9uD4ZHi02lzskaiqcBxf4zi+tXZY98a04wvc0hi/TcCPC2FOESZi51Nd7tlUeOJY8RofL799/g==
+"@types/react@>=18.0.33":
+  version "18.0.33"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.0.33.tgz#a1575160cb4376787c2f5fe0312302f824baa61e"
+  integrity sha512-sHxzVxeanvQyQ1lr8NSHaj0kDzcNiGpILEVt69g9S31/7PfMvNCKLKcsHw4lYKjs3cGNJjXSP4mYzX43QlnjNA==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -94,11 +38,6 @@
   version "0.16.2"
   resolved "https://registry.yarnpkg.com/@types/scheduler/-/scheduler-0.16.2.tgz#1a62f89525723dde24ba1b01b092bf5df8ad4d39"
   integrity sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==
-
-crypto-js@^4.0.0:
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/crypto-js/-/crypto-js-4.1.1.tgz#9e485bcf03521041bd85844786b83fb7619736cf"
-  integrity sha512-o2JlM7ydqd3Qk9CA0L4NL6mTzU2sdx96a+oOfPu8Mkl/PK51vSyoi8/rQ8NknZtk44vq15lmhAj9CIAGwgeWKw==
 
 csstype@^3.0.2:
   version "3.0.10"
@@ -117,19 +56,14 @@ loose-envify@^1.1.0:
   dependencies:
     js-tokens "^3.0.0 || ^4.0.0"
 
-react@>17:
+react@>=18:
   version "18.2.0"
   resolved "https://registry.yarnpkg.com/react/-/react-18.2.0.tgz#555bd98592883255fa00de14f1151a917b5d77d5"
   integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==
   dependencies:
     loose-envify "^1.1.0"
 
-typescript@^4.5.5:
-  version "4.6.4"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.6.4.tgz#caa78bbc3a59e6a5c510d35703f6a09877ce45e9"
-  integrity sha512-9ia/jWHIEbo49HfjrLGfKbZSuWo9iTMwXO+Ca3pRsSpbsMbc7/IU8NKdCZVRRBafVPGnoJeFL76ZOAA84I9fEg==
-
-"web-vitals@^2.1.x | ^3.x.x":
-  version "3.0.4"
-  resolved "https://registry.yarnpkg.com/web-vitals/-/web-vitals-3.0.4.tgz#a78ea93e95f7d7961dd151e0a76ac132c5dee2c9"
-  integrity sha512-Yau8qf1AJ/dm6MY180Bi0qpCIuWmAfKAnOqmxLecGfIHn0+ND3H4JOhXeY73Pyi9zjSF5J4SNUewHLNUzU7mmA==
+typescript@^5.0.4:
+  version "5.0.4"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.0.4.tgz#b217fd20119bd61a94d4011274e0ab369058da3b"
+  integrity sha512-cW9T5W9xY37cc+jfEnaUvX91foxtHkza3Nw3wkoF4sSlKn0MONdkdEndig/qPBWXNkmplh3NzayQzCiHM4/hqw==

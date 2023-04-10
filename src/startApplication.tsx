@@ -3,9 +3,9 @@ import updateAppLocale from "./utils/updateAppLocale";
 
 export default function startApplication() {
   // on locale code change, update app locale code
-  routerEvents.onLocaleChanging((localeCode: string) => {
-    updateAppLocale(localeCode);
-  });
+  routerEvents.onLocaleChanging(updateAppLocale);
+
+  routerEvents.onDetectingInitialLocaleCode(updateAppLocale);
 
   router.scan();
 }

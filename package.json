@@ -1,13 +1,13 @@
 {
     "name": "@mongez/react",
-    "version": "3.0.3",
+    "version": "3.0.4",
     "description": "A React App Manager",
     "main": "src/index.ts",
     "peerDependencies": {
-        "@mongez/config": "^1.0.x",
-        "@mongez/localization": "^2.1.x",
-        "@mongez/react-localization": "^1.0.x",
-        "@mongez/react-router": "^2.1.x"
+        "@mongez/config": "^1.0.26",
+        "@mongez/localization": "^2.1.3",
+        "@mongez/react-localization": "^1.0.4",
+        "@mongez/react-router": "^2.1.21"
     },
     "repository": {
         "type": "git",
@@ -22,8 +22,8 @@
     "author": "hassanzohdy",
     "license": "MIT",
     "devDependencies": {
-        "@types/react": ">18.0.0",
+        "@types/react": ">=18.0.33",
         "react": ">=18",
-        "typescript": "^4.5.5"
+        "typescript": "^5.0.4"
     }
 }
