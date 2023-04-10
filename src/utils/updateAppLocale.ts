@@ -13,8 +13,6 @@ export function updateAppLocale(localeCode: string) {
 
   const htmlElement = document.documentElement;
 
-  console.log(localeCodeData);
-
   htmlElement.setAttribute("lang", localeCode);
   setCurrent("localeCode", localeCode);
 
