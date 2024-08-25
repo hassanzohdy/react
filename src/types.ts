@@ -2,17 +2,9 @@ import { LocalizationConfigurations } from "@mongez/localization";
 
 export type LocaleCode = {
   /**
-   * Locale code name i.e English | Arabic..etc
-   */
-  name: string;
-  /**
    * Locale Code direction
    */
   direction: "ltr" | "rtl";
-  /**
-   * Language flag image path
-   */
-  flag?: string | object;
 };
 
 export type LocaleCodes = {
