@@ -1,13 +1,13 @@
 {
     "name": "@mongez/react",
-    "version": "3.1.4",
+    "version": "3.2.0",
     "description": "A React App Manager",
     "main": "src/index.ts",
     "peerDependencies": {
         "@mongez/config": "^1.0.26",
         "@mongez/localization": "^3.0.0",
         "@mongez/react-localization": "^3.0.0",
-        "@mongez/react-router": "^2.4.2"
+        "@mongez/react-router": "^2.5.0"
     },
     "repository": {
         "type": "git",
