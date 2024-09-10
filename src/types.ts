@@ -5,6 +5,7 @@ export type LocaleCode = {
    * Locale Code direction
    */
   direction: "ltr" | "rtl";
+  name?: string;
 };
 
 export type LocaleCodes = {
